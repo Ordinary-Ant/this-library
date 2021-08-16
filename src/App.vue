@@ -1,12 +1,25 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <!-- vue3 kepp-alive用法：使用插槽的方式 -->
+  <!-- <router-view v-slot="{ Component }">
+    <keep-alive exclude="/detail">
+      <component :is="Component"/>
+    </keep-alive>
+  </router-view> -->
+  <router-view />
+  <FooterNav/>
 </template>
 
+<script>
+import FooterNav from 'components/footernav.vue'
+export default {
+  components: {
+    FooterNav
+  }
+}
+</script>
+
 <style lang="scss">
+@import "assets/css/base.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -14,17 +27,12 @@
   text-align: center;
   color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+html {
+  overflow: hidden;
+  height: 100%;
+}
+body {
+  height: 100%;
+  overflow: auto;
 }
 </style>
